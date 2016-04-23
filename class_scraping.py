@@ -2,6 +2,7 @@ from datetime import datetime
 from utilities import createsoup
 import time
 import sys
+from twilio.rest import TwilioRestClient
 
 class_idx_idx = 0
 
@@ -43,6 +44,18 @@ def monitor_desired_class(subject, class_no):
 		info = class_info(subject, class_no)
 		print(datetime.now())
 		for section in info:
+			if int(section['Seats Available']) > 0:
+				ACCOUNT_SID = "AC0bd0e5d8ff207ed31d92cde07c267eca" 
+				AUTH_TOKEN = "ea78bf222fed2baf4cadac9eaf6d29eb" 
+
+				client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN) 
+
+				client.messages.create(
+					to="8015563321", 
+					from_="+13853991089", 
+					body="class is open",  
+				)	
+				return
 			try:
 				print('{0} {1}-{2}: {3}'.format(section['Subject'], section['Catalog #'], section['Section'], section['Seats Available']))
 			except IndexError:
