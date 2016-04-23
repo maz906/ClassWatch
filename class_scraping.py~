@@ -29,7 +29,7 @@ def monitor_desired_section(subject, class_no, section_nos):
 		print(datetime.now())
 		for section_info in info:
 			try:
-				if int(section_info['Section']) in desired_sections:
+				if int(section_info[section_idx]) in desired_sections:
 					if int(section_info[avail_idx]) != 0:
 						print('SECTION {0} AVAILABLE. ADD CLASS INDEX TO CART: {1}'.format(section_info[section_idx], section_info[class_idx_idx]))
 						return
