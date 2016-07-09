@@ -23,7 +23,7 @@ cost_idx = 14
 
 
 def courses_info(dept, curr_term = 1158):
-	dept_page = 'http://www.acs.utah.edu/uofu/stu/scheduling?term={0}&dept={1}&classtype=g&cmd='.format(curr_term, dept, '')
-	course_table = createsoup(dept_page).find_all('table')[courses_idx].find_all('tr')[2:]
-	return [[x.get_text().replace('\xa0', '').strip(' \n') for x in course.find_all('td')] for course in course_table]
+    dept_page = 'http://www.acs.utah.edu/uofu/stu/scheduling?term={0}&dept={1}&classtype=g&cmd='.format(curr_term, dept, '')
+    course_table = createsoup(dept_page).find_all('table')[courses_idx].find_all('tr')[2:]
+    return [[x.get_text().replace('\xa0', '').strip(' \n') for x in course.find_all('td')] for course in course_table]
 
